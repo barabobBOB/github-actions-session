@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect
-from .models import Post
+from django.shortcuts import render
 from .forms import PostForm  # 게시글을 입력할 폼이 필요한 경우
 
 
