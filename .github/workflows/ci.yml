@@ -67,6 +67,13 @@ jobs: # Job
 
     # 테스트 진행
     - name: Run Tests
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        TEST_DATABASE_NAME: ${{ secrets.TEST_DATABASE_NAME }}
+        TEST_DATABASE_USER: ${{ secrets.TEST_DATABASE_USER }}
+        TEST_DATABASE_PASSWORD: ${{ secrets.TEST_DATABASE_PASSWORD }}
+        TEST_DATABASE_HOST: ${{ secrets.TEST_DATABASE_HOST }}
+        TEST_DATABASE_PORT: ${{ secrets.TEST_DATABASE_PORT }}
       run: |
         mysql --host 127.0.0.1 --port 3306 -u ${{ secrets.TEST_DATABASE_USER }} -p${{ secrets.TEST_DATABASE_PASSWORD }}
         python manage.py test --settings=config.settings.test
