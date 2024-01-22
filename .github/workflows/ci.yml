@@ -11,6 +11,8 @@ on: # Event
 jobs: # Job
   ci: # Job 이름
     runs-on: ubuntu-latest # Runner
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
     services: # 컨테이너, docker-compose 설정과 거의 유사
       db:
@@ -61,4 +63,4 @@ jobs: # Job
     - name: Run Tests
       run: |
         mysql --host 127.0.0.1 --port 3306 -u ${{ secrets.TEST_DATABASE_USER }} -p${{ secrets.TEST_DATABASE_PASSWORD }}
-        python manage.py test --settings=config.settings.actions
+        python manage.py test --settings=config.settings.test
