@@ -9,6 +9,7 @@ services:
       - "3307:3306"
   web:
     build: .
+    restart: unless-stopped
     ports:
       - "8001:8000"
     volumes:
