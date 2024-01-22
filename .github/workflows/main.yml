@@ -55,13 +55,11 @@ jobs: # Job
     # mysql 컨테이너에 migration, 테이블 생성
     - name: Run migrations
       run: |
-        cd github_actions
         python manage.py makemigrations --settings=config.settings.test
         python manage.py migrate --settings=config.settings.test
 
     # 테스트 진행
     - name: Run Tests
       run: |
-        cd github_actions
         mysql --host 127.0.0.1 --port 3306 -u ${{ secrets.TEST_DATABASE_USER }} -p${{ secrets.TEST_DATABASE_PASSWORD }}
         python manage.py test --settings=config.settings.actions
