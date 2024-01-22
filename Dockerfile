@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.10
+FROM chltpdus48/github-actions-session
 
 # Set the working directory to /app
 WORKDIR /app
@@ -18,5 +18,5 @@ EXPOSE 8000
 ENTRYPOINT ["sh", "-c"]
 
 # Then, define the command to execute
-CMD ["python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+CMD ["python manage.py migrate --settings=config.settings.prod && python manage.py runserver 0.0.0.0:8000"]
 
