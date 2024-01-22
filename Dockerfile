@@ -13,5 +13,10 @@ RUN pip install -r requirements.txt
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
 
-# Run app.py when the container launches
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Run migrations and then start the server
+# First, define the entrypoint script
+ENTRYPOINT ["sh", "-c"]
+
+# Then, define the command to execute
+CMD ["python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+
