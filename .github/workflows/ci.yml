@@ -11,8 +11,6 @@ on: # Event
 jobs: # Job
   ci: # Job 이름
     runs-on: ubuntu-latest # Runner
-    env:
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
     services: # 컨테이너, docker-compose 설정과 거의 유사
       db:
@@ -55,6 +53,14 @@ jobs: # Job
 
     # mysql 컨테이너에 migration, 테이블 생성
     - name: Run migrations
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        TEST_DATABASE_NAME: ${{ secrets.TEST_DATABASE_NAME }}
+        TEST_DATABASE_USER: ${{ secrets.TEST_DATABASE_USER }}
+        TEST_DATABASE_PASSWORD: ${{ secrets.TEST_DATABASE_PASSWORD }}
+        TEST_DATABASE_HOST: ${{ secrets.TEST_DATABASE_HOST }}
+        TEST_DATABASE_PORT: ${{ secrets.TEST_DATABASE_PORT }}
+        
       run: |
         python manage.py makemigrations --settings=config.settings.test
         python manage.py migrate --settings=config.settings.test
