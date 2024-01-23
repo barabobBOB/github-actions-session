@@ -1,9 +1,16 @@
 version: '3'
 services:
   web:
+    container_name: backend
+    image: chltpdus48/github-actions-session
     build: .
     restart: unless-stopped
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend/:/backend/
+    command:
+      - sh
+      - -c
+      - |
+        python manage.py makemigrations --settings=config.settings.prod
+        python manage.py migrate --settings=config.settings.prod
+        python manage.py runserver 0.0.0.0:8000 --settings=config.settings.prod

@@ -1,22 +1,18 @@
-# Use an official Python runtime as a parent image
-FROM chltpdus48/github-actions-session
+FROM python:3.10
 
-# Set the working directory to /app
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# requirements.txt 파일 먼저 복사
+COPY requirements.txt /app
 
-# Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
+# pip 업그레이드 및 필요한 패키지 설치
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
 
-# Make port 8000 available to the world outside this container
-EXPOSE 8000
+# 애플리케이션 파일 복사
+COPY . /app/
 
-# Run migrations and then start the server
-# First, define the entrypoint script
-ENTRYPOINT ["sh", "-c"]
-
-# Then, define the command to execute
-CMD ["python manage.py migrate --settings=config.settings.prod && python manage.py runserver 0.0.0.0:8000"]
-
+# 필요한 시스템 패키지 설치 및 정리
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y libgl1-mesa-glx build-essential && \
+    rm -rf /var/lib/apt/lists/*
