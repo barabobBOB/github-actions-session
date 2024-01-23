@@ -7,6 +7,13 @@ services:
       MYSQL_DATABASE: test
     ports:
       - "3307:3306"
+    command:
+      - sh
+      - -c
+      - |
+        python manage.py makemigrations --settings=config.settings.test
+        python manage.py migrate --settings=config.settings.test
+        python manage.py runserver 0.0.0.0:8000 --settings=config.settings.test
   web:
     build: .
     restart: unless-stopped
