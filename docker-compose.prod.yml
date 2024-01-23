@@ -3,6 +3,8 @@ services:
   web:
     container_name: backend
     image: chltpdus48/github-actions-session
+    env_file:
+      - .env
     build:
       context: .
       dockerfile: Dockerfile
