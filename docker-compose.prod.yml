@@ -3,16 +3,23 @@ services:
   web:
     container_name: backend
     image: chltpdus48/github-actions-session
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DATABASE_NAME: $DATABASE_NAME
+        DATABASE_USER: $DATABASE_USER
+        DATABASE_PASSWORD: $DATABASE_PASSWORD
+        DATABASE_HOST: $DATABASE_HOST
+        DATABASE_PORT: $DATABASE_PORT
+        SECRET_KEY: $SECRET_KEY
     ports:
       - "8000:8000"
     command:
       - sh
       - -c
       - |
-        python manage.py makemigrations
         python manage.py migrate
         python manage.py runserver 0.0.0.0:8000
-
 
 #--settings=config.settings.prod

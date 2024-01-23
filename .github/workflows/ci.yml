@@ -62,8 +62,8 @@ jobs: # Job
         TEST_DATABASE_PORT: ${{ secrets.TEST_DATABASE_PORT }}
         
       run: |
-        python manage.py makemigrations --settings=config.settings.test
-        python manage.py migrate --settings=config.settings.test
+        python manage.py makemigrations
+        python manage.py migrate
 
     # 테스트 진행
     - name: Run Tests
@@ -76,4 +76,4 @@ jobs: # Job
         TEST_DATABASE_PORT: ${{ secrets.TEST_DATABASE_PORT }}
       run: |
         mysql --host 127.0.0.1 --port 3306 -u ${{ secrets.TEST_DATABASE_USER }} -p${{ secrets.TEST_DATABASE_PASSWORD }}
-        python manage.py test --settings=config.settings.test
+        python manage.py test
