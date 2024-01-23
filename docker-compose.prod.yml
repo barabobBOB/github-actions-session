@@ -4,7 +4,6 @@ services:
     container_name: backend
     image: chltpdus48/github-actions-session
     build: .
-    restart: unless-stopped
     ports:
       - "8000:8000"
     command:
