@@ -30,8 +30,6 @@ DEBUG = True
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY', 'default')
 
-print(os.getenv('SECRET_KEY', 'default'))
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

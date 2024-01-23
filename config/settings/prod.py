@@ -17,3 +17,10 @@ DATABASES = {
         }
     }
 }
+
+print(os.getenv('DATABASE_NAME'))
+print(os.getenv('DATABASE_USER'))
+print(os.getenv('DATABASE_PASSWORD'))
+print(os.getenv('DATABASE_NAME'))
+print(os.getenv('DATABASE_HOST'))
+print(os.getenv('DATABASE_PORT'))
