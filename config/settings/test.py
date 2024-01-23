@@ -1,4 +1,8 @@
-from _base import *
+from .base import *
+
+DEBUG = True  # 실제 배포 시에는 False로
+ALLOWED_HOSTS = ['*']  # 추후 배포할 호스트 주소 입력 예정
+INSTALLED_APPS += []
 
 DATABASES = {
     "default": {
