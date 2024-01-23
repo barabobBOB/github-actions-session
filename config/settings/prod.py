@@ -1,10 +1,5 @@
 from _base import *
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-env_path = BASE_DIR / '.env'
-
-load_dotenv(dotenv_path=env_path)
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
