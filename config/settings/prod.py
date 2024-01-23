@@ -7,11 +7,11 @@ INSTALLED_APPS += []
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),
-        'PORT': os.getenv('DATABASE_PORT'),
+        'NAME': os.getenv('test'),
+        'USER': os.getenv('seyeon'),
+        'PASSWORD': os.getenv('qwer1234'),
+        'HOST': os.getenv('database-1.cjwccm2cmi84.ap-northeast-2.rds.amazonaws.com'),
+        'PORT': os.getenv('3306'),
         'OPTIONS': {
             'unix_socket': None,
         }
