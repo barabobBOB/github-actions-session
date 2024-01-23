@@ -1,0 +1,9 @@
+.env
+.DS_store
+.idea
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
