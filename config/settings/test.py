@@ -1,12 +1,17 @@
-from config.settings import *
+from _base import *
 
-# DATABASES = {
-#     "default": {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': env('TEST_DATABASE_NAME'),
-#         'USER': env('TEST_DATABASE_USER'),
-#         'PASSWORD': env('TEST_DATABASE_PASSWORD'),
-#         'HOST': env('TEST_DATABASE_HOST'),
-#         'PORT': env('TEST_DATABASE_PORT'),
-#     }
-# }
+BASE_DIR = Path(__file__).resolve().parent.parent
+env_path = BASE_DIR / '.env'
+
+load_dotenv(dotenv_path=env_path)
+
+DATABASES = {
+    "default": {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('TEST_DATABASE_NAME'),
+        'USER': os.getenv('TEST_DATABASE_USER'),
+        'PASSWORD': os.getenv('TEST_DATABASE_PASSWORD'),
+        'HOST': os.getenv('TEST_DATABASE_HOST'),
+        'PORT': os.getenv('TEST_DATABASE_PORT'),
+    }
+}
